@@ -1,0 +1,145 @@
+[ @file = "/Users/steinersimon/Documents/GarminApps/EstTimeDatafield/source/EstTimeDatafieldView.mc"; @line = 1; ]
+import Toybox.Activity;
+[ @file = "/Users/steinersimon/Documents/GarminApps/EstTimeDatafield/source/EstTimeDatafieldView.mc"; @line = 2; ]
+import Toybox.Lang;
+[ @file = "/Users/steinersimon/Documents/GarminApps/EstTimeDatafield/source/EstTimeDatafieldView.mc"; @line = 3; ]
+import Toybox.Time;
+[ @file = "/Users/steinersimon/Documents/GarminApps/EstTimeDatafield/source/EstTimeDatafieldView.mc"; @line = 4; ]
+import Toybox.WatchUi;
+[ @file = "/Users/steinersimon/Documents/GarminApps/EstTimeDatafield/source/EstTimeDatafieldView.mc"; @line = 6; ]
+class EstTimeDatafieldView extends WatchUi.SimpleDataField{
+    [ @file = "/Users/steinersimon/Documents/GarminApps/EstTimeDatafield/source/EstTimeDatafieldView.mc"; @line = 6; ]
+    <init> {
+    }
+    [ @file = "/Users/steinersimon/Documents/GarminApps/EstTimeDatafield/source/EstTimeDatafieldView.mc"; @line = 6; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/steinersimon/Documents/GarminApps/EstTimeDatafield/source/EstTimeDatafieldView.mc"; @line = 8; @position = 16; ]
+    private
+    var mLastEstTime as Lang.Float;
+    [ @file = "/Users/steinersimon/Documents/GarminApps/EstTimeDatafield/source/EstTimeDatafieldView.mc"; @line = 11; ]
+    function initialize() as Void {
+_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_11_26_15_4_start:
+[ "/Users/steinersimon/Documents/GarminApps/EstTimeDatafield/source/EstTimeDatafieldView.mc" 12 8 ]
+        %tmp.1 = getm $.Toybox.WatchUi;
+        %tmp.2 = getv %tmp.1 :SimpleDataField;
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "/Users/steinersimon/Documents/GarminApps/EstTimeDatafield/source/EstTimeDatafieldView.mc" 13 8 ]
+        %tmp.4 = "Est. race time";
+        putv self :label %tmp.4;
+[ "/Users/steinersimon/Documents/GarminApps/EstTimeDatafield/source/EstTimeDatafieldView.mc" 14 8 ]
+        %tmp.5 = 0.0;
+        putv self :mLastEstTime %tmp.5;
+_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_11_26_15_4_stop:
+    }
+    [ @file = "/Users/steinersimon/Documents/GarminApps/EstTimeDatafield/source/EstTimeDatafieldView.mc"; @line = 21; ]
+    function compute(info as Activity.Info) as Numeric or Duration or String or Null {
+_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_21_85_37_4_start:
+[ "/Users/steinersimon/Documents/GarminApps/EstTimeDatafield/source/EstTimeDatafieldView.mc" 25 8 ]
+        [ "_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_21_85_37_4_start" "_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_21_85_37_4_stop" ]
+        %elapsedDistance.1 = local;
+_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_25_30_25_84_begin:
+        %tmp.1 = lgetv %info;
+        %tmp.2 = getv %tmp.1 :elapsedDistance;
+        %tmp.3 = null;
+        %tmp.4 = ne %tmp.2 %tmp.3;
+        bf %tmp.4 @_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_25_30_25_84_false;
+_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_25_30_25_84_true:
+        %tmp.5 = lgetv %info;
+        %tmp.6 = getv %tmp.5 :elapsedDistance;
+        push %tmp.6;
+        goto @_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_25_30_25_84_end;
+_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_25_30_25_84_false:
+        %tmp.7 = 0.0;
+        push %tmp.7;
+_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_25_30_25_84_end:
+        %tmp.8 = phi [%tmp.4 @_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_25_30_25_84_begin] [%tmp.6 @_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_25_30_25_84_true] [%tmp.7 @_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_25_30_25_84_false] [%tmp.8 @_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_25_30_25_84_end];
+        lputv %elapsedDistance.1 %tmp.8;
+[ "/Users/steinersimon/Documents/GarminApps/EstTimeDatafield/source/EstTimeDatafieldView.mc" 26 8 ]
+        [ "_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_21_85_37_4_start" "_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_21_85_37_4_stop" ]
+        %currentSpeed.2 = local;
+_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_26_27_26_75_begin:
+        %tmp.9 = lgetv %info;
+        %tmp.10 = getv %tmp.9 :currentSpeed;
+        %tmp.11 = null;
+        %tmp.12 = ne %tmp.10 %tmp.11;
+        bf %tmp.12 @_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_26_27_26_75_false;
+_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_26_27_26_75_true:
+        %tmp.13 = lgetv %info;
+        %tmp.14 = getv %tmp.13 :currentSpeed;
+        push %tmp.14;
+        goto @_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_26_27_26_75_end;
+_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_26_27_26_75_false:
+        %tmp.15 = 0.0;
+        push %tmp.15;
+_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_26_27_26_75_end:
+        %tmp.16 = phi [%tmp.12 @_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_26_27_26_75_begin] [%tmp.14 @_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_26_27_26_75_true] [%tmp.15 @_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_26_27_26_75_false] [%tmp.16 @_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_26_27_26_75_end];
+        lputv %currentSpeed.2 %tmp.16;
+[ "/Users/steinersimon/Documents/GarminApps/EstTimeDatafield/source/EstTimeDatafieldView.mc" 27 8 ]
+        [ "_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_21_85_37_4_start" "_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_21_85_37_4_stop" ]
+        %elapsedTime.3 = local;
+_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_27_26_27_72_begin:
+        %tmp.17 = lgetv %info;
+        %tmp.18 = getv %tmp.17 :elapsedTime;
+        %tmp.19 = null;
+        %tmp.20 = ne %tmp.18 %tmp.19;
+        bf %tmp.20 @_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_27_26_27_72_false;
+_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_27_26_27_72_true:
+        %tmp.21 = lgetv %info;
+        %tmp.22 = getv %tmp.21 :elapsedTime;
+        push %tmp.22;
+        goto @_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_27_26_27_72_end;
+_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_27_26_27_72_false:
+        %tmp.23 = 0.0;
+        push %tmp.23;
+_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_27_26_27_72_end:
+        %tmp.24 = phi [%tmp.20 @_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_27_26_27_72_begin] [%tmp.22 @_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_27_26_27_72_true] [%tmp.23 @_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_27_26_27_72_false] [%tmp.24 @_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_27_26_27_72_end];
+        lputv %elapsedTime.3 %tmp.24;
+[ "/Users/steinersimon/Documents/GarminApps/EstTimeDatafield/source/EstTimeDatafieldView.mc" 28 8 ]
+        [ "_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_21_85_37_4_start" "_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_21_85_37_4_stop" ]
+        %completeDistance.4 = local;
+        %tmp.25 = 10.0;
+        %tmp.26 = 1000;
+        %tmp.27 = mul %tmp.25 %tmp.26;
+        lputv %completeDistance.4 %tmp.27;
+[ "/Users/steinersimon/Documents/GarminApps/EstTimeDatafield/source/EstTimeDatafieldView.mc" 31 8 ]
+        [ "_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_21_85_37_4_start" "_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_21_85_37_4_stop" ]
+        %remainingDistance.5 = local;
+        %tmp.29 = lgetv %completeDistance.4;
+        %tmp.31 = lgetv %elapsedDistance.1;
+        %tmp.32 = sub %tmp.29 %tmp.31;
+        lputv %remainingDistance.5 %tmp.32;
+[ "/Users/steinersimon/Documents/GarminApps/EstTimeDatafield/source/EstTimeDatafieldView.mc" 32 8 ]
+_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_32_8_35_8_if_stmt:
+        %tmp.34 = lgetv %remainingDistance.5;
+        %tmp.35 = 0;
+        %tmp.36 = lt %tmp.34 %tmp.35;
+        bf %tmp.36 @_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_32_8_35_8_if_end;
+_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_32_8_35_8_if_true:
+_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_32_33_35_8_start:
+[ "/Users/steinersimon/Documents/GarminApps/EstTimeDatafield/source/EstTimeDatafieldView.mc" 33 12 ]
+        [ "_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_32_33_35_8_start" "_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_32_33_35_8_stop" ]
+        %remainingEstTime.6 = local;
+        %tmp.38 = lgetv %remainingDistance.5;
+        %tmp.40 = lgetv %currentSpeed.2;
+        %tmp.41 = div %tmp.38 %tmp.40;
+        lputv %remainingEstTime.6 %tmp.41;
+[ "/Users/steinersimon/Documents/GarminApps/EstTimeDatafield/source/EstTimeDatafieldView.mc" 34 12 ]
+        %tmp.43 = lgetv %elapsedTime.3;
+        %tmp.45 = lgetv %remainingEstTime.6;
+        %tmp.46 = add %tmp.43 %tmp.45;
+        putv self :mLastEstTime %tmp.46;
+_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_32_33_35_8_stop:
+        goto @_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_32_8_35_8_if_end;
+_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_32_8_35_8_if_end:
+[ "/Users/steinersimon/Documents/GarminApps/EstTimeDatafield/source/EstTimeDatafieldView.mc" 36 8 ]
+        %tmp.48 = getv ? :mLastEstTime;
+        ret %tmp.48;
+_Users_steinersimon_Documents_GarminApps_EstTimeDatafield_source_EstTimeDatafieldView_mc_21_85_37_4_stop:
+    }
+}
+[ @file = "/Users/steinersimon/Documents/GarminApps/EstTimeDatafield/source/EstTimeDatafieldView.mc"; @line = 1; ]
+<init> {
+}
