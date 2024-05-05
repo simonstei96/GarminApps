@@ -1,0 +1,5 @@
+<settings>
+    <setting propertyKey="@Properties.runDistance" title="Run Distance">
+        <settingConfig type="numeric" readonly="false" />
+    </setting>
+</settings>

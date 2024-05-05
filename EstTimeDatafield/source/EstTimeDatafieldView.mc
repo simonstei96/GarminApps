@@ -10,7 +10,7 @@ class EstTimeDatafieldView extends WatchUi.SimpleDataField {
     // Set the label of the data field here.
     function initialize() {
         WatchUi.SimpleDataField.initialize();
-        label = "Est. race time";
+        label = "Est. run time";
         mLastEstTime = 0;
     }
 
@@ -29,7 +29,7 @@ class EstTimeDatafieldView extends WatchUi.SimpleDataField {
             //in milliseconds (ms)
             var elapsedTime = info.elapsedTime != null ? info.elapsedTime : 0;
             //in meter (for test use 10 kilometer)
-            var completeDistance = 10.0 * 1000; 
+            var completeDistance = 1000 * Application.Properties.getValue("runDistance"); 
 
             //Calculate estimated time to finish the given set distance of the run (race)
             //in meter
